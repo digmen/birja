@@ -140,10 +140,6 @@ function closeModalOneArchive ()
   modalArchive.style.display = 'none';
 }
 
-
-
-
-
 const modalAvatar = document.getElementById( 'modal-avatar' );
 
 function openModalAvatar ()
@@ -156,40 +152,178 @@ function closeModalAvatar ()
   modalAvatar.style.display = 'none';
 }
 
+const modalExtended = document.getElementById( 'modal-extended' );
+
+function openModalExtended ()
+{
+  modalExtended.style.display = 'block';
+}
+
+function closeModalExtended ()
+{
+  modalExtended.style.display = 'none';
+}
+
+const modalExtendedTwo = document.getElementById( 'modal-extended-two' );
+
+function openModalExtendedTwo ()
+{
+  modalExtendedTwo.style.display = 'block';
+}
+
+function closeModalExtendedTwo ()
+{
+  modalExtendedTwo.style.display = 'none';
+}
+
+
+const modalCash = document.getElementById( 'modal-сash' );
+
+function openModalCash ()
+{
+  modalCash.style.display = 'block';
+}
+
+function closeModalCash ()
+{
+  modalCash.style.display = 'none';
+}
+
+const modalDepo = document.getElementById( 'modal-depo' );
+
+function openModalDepo ()
+{
+  modalDepo.style.display = 'block';
+}
+
+function closeModalDepo ()
+{
+  modalDepo.style.display = 'none';
+}
+
+
 
 
 // Тут будет функция для определение значения кредитного плеча
 // Получаем элементы
-const rangeInput = document.getElementById( 'rangeInput' );
-const rangeLabelsPoints = document.querySelectorAll( '#rangeListPoints span' );
-const rangeLabelsValues = document.querySelectorAll( '#rangeListValues li' );
+// const rangeInput = document.getElementById( 'rangeInput' );
+// const rangeLabelsPoints = document.querySelectorAll( '#rangeListPoints span' );
+// const rangeLabelsValues = document.querySelectorAll( '#rangeListValues li' );
 
 // Инициализация: добавляем класс active к первой точке и первому числу
-rangeLabelsPoints[ 0 ].classList.add( 'active' );
-rangeLabelsValues[ 0 ].classList.add( 'active' );
+// rangeLabelsPoints[ 0 ].classList.add( 'active' );
+// rangeLabelsValues[ 0 ].classList.add( 'active' );
 
 // Обработчик события изменения значения ползунка
-rangeInput.addEventListener( 'input', function ()
+// rangeInput.addEventListener( 'input', function ()
+// {
+//   const currentValue = parseInt( this.value );
+
+//   rangeLabelsPoints.forEach( span =>
+//   {
+//     span.classList.remove( 'active', 'previous' );
+//   } );
+//   rangeLabelsValues.forEach( li => li.classList.remove( 'active', 'previous' ) );
+
+//   rangeLabelsPoints[ currentValue - 1 ].classList.add( 'active' );
+//   rangeLabelsValues[ currentValue - 1 ].classList.add( 'active' );
+
+//   for ( let i = 0; i < currentValue - 1; i++ )
+//   {
+//     rangeLabelsPoints[ i ].classList.add( 'previous' );
+//     rangeLabelsValues[ i ].classList.add( 'previous' );
+//   }
+// } );
+
+
+// кастомный select option в купить продать
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName( "custom-select" );
+l = x.length;
+for ( i = 0; i < l; i++ )
 {
-  const currentValue = parseInt( this.value );
-
-  // Удаляем класс active и previous со всех точек и чисел
-  rangeLabelsPoints.forEach( span =>
+  selElmnt = x[ i ].getElementsByTagName( "select" )[ 0 ];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement( "DIV" );
+  a.setAttribute( "class", "select-selected" );
+  a.innerHTML = selElmnt.options[ selElmnt.selectedIndex ].innerHTML;
+  x[ i ].appendChild( a );
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement( "DIV" );
+  b.setAttribute( "class", "select-items select-hide" );
+  for ( j = 1; j < ll; j++ )
   {
-    span.classList.remove( 'active', 'previous' );
-  } );
-  rangeLabelsValues.forEach( li => li.classList.remove( 'active', 'previous' ) );
-
-  // Добавляем класс active к текущей точке и числу
-  rangeLabelsPoints[ currentValue - 1 ].classList.add( 'active' );
-  rangeLabelsValues[ currentValue - 1 ].classList.add( 'active' );
-
-  // Добавляем класс previous ко всем предыдущим точкам и числам
-  for ( let i = 0; i < currentValue - 1; i++ )
-  {
-    rangeLabelsPoints[ i ].classList.add( 'previous' );
-    rangeLabelsValues[ i ].classList.add( 'previous' );
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement( "DIV" );
+    c.innerHTML = selElmnt.options[ j ].innerHTML;
+    c.addEventListener( "click", function ( e )
+    {
+      /* When an item is clicked, update the original select box,
+      and the selected item: */
+      var y, i, k, s, h, sl, yl;
+      s = this.parentNode.parentNode.getElementsByTagName( "select" )[ 0 ];
+      sl = s.length;
+      h = this.parentNode.previousSibling;
+      for ( i = 0; i < sl; i++ )
+      {
+        if ( s.options[ i ].innerHTML == this.innerHTML )
+        {
+          s.selectedIndex = i;
+          h.innerHTML = this.innerHTML;
+          y = this.parentNode.getElementsByClassName( "same-as-selected" );
+          yl = y.length;
+          for ( k = 0; k < yl; k++ )
+          {
+            y[ k ].removeAttribute( "class" );
+          }
+          this.setAttribute( "class", "same-as-selected" );
+          break;
+        }
+      }
+      h.click();
+    } );
+    b.appendChild( c );
   }
-} );
+  x[ i ].appendChild( b );
+  a.addEventListener( "click", function ( e )
+  {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect( this );
+    this.nextSibling.classList.toggle( "select-hide" );
+    this.classList.toggle( "select-arrow-active" );
+  } );
+}
 
-
+function closeAllSelect ( elmnt )
+{
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName( "select-items" );
+  y = document.getElementsByClassName( "select-selected" );
+  xl = x.length;
+  yl = y.length;
+  for ( i = 0; i < yl; i++ )
+  {
+    if ( elmnt == y[ i ] )
+    {
+      arrNo.push( i )
+    } else
+    {
+      y[ i ].classList.remove( "select-arrow-active" );
+    }
+  }
+  for ( i = 0; i < xl; i++ )
+  {
+    if ( arrNo.indexOf( i ) )
+    {
+      x[ i ].classList.add( "select-hide" );
+    }
+  }
+}

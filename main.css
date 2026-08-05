@@ -41,6 +41,19 @@ tr {
 }
 
 
+span {
+    font-size: 12px;
+}
+
+button {
+    font-size: 12px !important;
+}
+
+label {
+    font-size: 12px;
+}
+
+
 .modal-one-navbar,
 .modal-two-navbar,
 .modal-three-navbar,
@@ -51,7 +64,11 @@ tr {
 .modal-eighth-navbar,
 .modal-nine-navbar,
 .modal-ten-navbar,
-.modal-one-archive {
+.modal-one-archive,
+.modal-extended,
+.modal-extended-two,
+.modal-сash,
+.modal-depo {
     position: fixed;
     top: 0;
     left: 0;
@@ -116,11 +133,15 @@ tr {
 
 .nav-block {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 .nav-block img {
     width: 100%;
     height: 30px;
+    width: 70px;
     margin: 0px 1% 0px 1%;
 }
 
@@ -249,7 +270,7 @@ tr {
 
 .table-right-depository-head th:nth-child(4),
 .table-right-depository-body th:nth-child(4) {
-    width: 14px;
+    width: 35px;
 }
 
 .table-right-depository-body th {
@@ -284,6 +305,7 @@ tr {
     transition: 0.5s;
     border: none;
     color: white;
+    font-size: 14px;
 }
 
 .table-right-depository-button svg {
@@ -309,6 +331,7 @@ tr {
     border-left-style: solid;
     border: 1px solid #24262A;
     position: relative;
+    border-bottom: none;
 }
 
 
@@ -529,7 +552,7 @@ tr {
     border-radius: 0px !important;
     font-size: 12px !important;
     font-weight: 100 !important;
-    padding: 5px 15px !important;
+    padding: 0px 10px !important;
     height: 40px !important;
 }
 
@@ -1284,6 +1307,7 @@ tbody {}
     border-radius: 0px !important;
     border: none;
     outline: none;
+    font-size: 16px !important;
 }
 
 .spot-btn-buy {
@@ -1296,6 +1320,7 @@ tbody {}
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     flex: 1 1 0%;
+    font-size: 16px !important;
 }
 
 
@@ -1308,6 +1333,7 @@ tbody {}
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     flex: 1 1 0%;
+    font-size: 16px !important;
 }
 
 #buy-sell .spot-btn-buy.active {
@@ -1317,6 +1343,7 @@ tbody {}
     color: #fff;
     padding: 4.5px 0px;
     flex: 1 1 0%;
+    font-size: 16px !important;
 }
 
 
@@ -1347,6 +1374,7 @@ tbody {}
     padding: 4.5px 0px;
     position: relative;
     flex: 1 1 0%;
+    font-size: 16px !important;
 }
 
 #buy-sell .spot-btn.active::after {
@@ -1407,6 +1435,7 @@ tbody {}
     border-bottom-left-radius: 5px;
     padding: 5px;
     flex: 1;
+    font-size: 12px;
 }
 
 .score-input-limit-currency input {
@@ -1422,6 +1451,7 @@ tbody {}
     border-bottom-left-radius: 5px;
     padding: 5px;
     flex: 1;
+    font-size: 12px;
 }
 
 .score-input-limit-price label {
@@ -1434,6 +1464,7 @@ tbody {}
     color: white;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-size: 12px;
 }
 
 .score-input-limit-currency label {
@@ -1446,6 +1477,7 @@ tbody {}
     color: white;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-size: 12px;
 }
 
 .score-input-limit-all {
@@ -1468,6 +1500,7 @@ tbody {}
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     flex: 1;
+    font-size: 12px;
 }
 
 .score-input-limit-all label {
@@ -1477,6 +1510,30 @@ tbody {}
     border-left: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-size: 12px;
+}
+
+
+.score-input-data-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 5px 0px;
+}
+
+.score-input-data-one input {
+    background-color: #2A2D35;
+    outline: none;
+    color: white;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    flex: 1;
+    font-size: 12px;
 }
 
 .buy-sell-select {
@@ -1596,3 +1653,80 @@ tbody {}
 /* Блок депоненты и подробно */
 
 /* Нижная часть сайта */
+
+
+
+
+
+
+
+
+/* Кастомный select option в купить продать */
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    width: 100%;
+    font-size: 12px;
+    border: 1px solid gray;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected {
+    background-color: #2A2D35;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+    color: #ffffff;
+    padding: 5px 5px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    height: 30px;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: #2A2D35;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid gray;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+
+}
+
+.select-items div:hover,
+.same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Кастомный select option в купить продать */
